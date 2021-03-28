@@ -1,4 +1,6 @@
 sudo: required
+language: generic
+
 services:
   - docker
 
@@ -6,4 +8,4 @@ before_install:
   - docker build -t gustavoarmelin/docker-react-test -f Dockerfile.dev .
 
 script:
-  - docker run gustavoarmelin/docker-react-test npm run test -- --coverage
+  - docker run -e CI=true gustavoarmelin/docker-react-test npm run test -- --coverage
